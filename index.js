@@ -1,4 +1,5 @@
 import Floater from './floater.js'
+import Background from './background.js'
 const DEBUG = true
 
 function debug(s) {
@@ -11,8 +12,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
 
     const floater = new Floater();
+    const background = new Background();
+
     function tick(){
-        floater.draw(ctx)
+        background.draw(canvas, ctx)
+        floater.draw(canvas, ctx)
     }
 
     let lastTick
