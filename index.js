@@ -8,16 +8,16 @@ window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('canvas')
     const ctx = canvas.getContext('2d');
 
-    const seed = [255, 0, 122]
+    const seed = [128, 128, 128]
     function tick() {
         seed.forEach((v, i, a) => {
-            const factor = 10
+            const factor = 30
             const delta = ((Math.random() * 2) - 1) * factor
             a[i] = Math.min(Math.abs(Math.round(v + delta)),255)
         })
        const [r,g,b] = seed
         ctx.fillStyle = `rgb(${r},${g},${b})`;
-        ctx.fillRect(10, 10, 150, 100);
+        ctx.fillRect(canvas.width/3,canvas.height/3, canvas.width/3, canvas.height/3);
     }
 
     let lastTick
@@ -30,5 +30,5 @@ window.addEventListener('DOMContentLoaded', () => {
             tick()
             lastTick = undefined
         })
-    }, 33)
+    }, 2000) // 1,666 for 60fps
 })
